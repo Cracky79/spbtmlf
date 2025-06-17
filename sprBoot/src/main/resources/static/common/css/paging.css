@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+/*paging*/
+ul .padding-inline-start { 0px !important };
+.paging{ position: relative; text-align: center; margin: 30px 0;}
+.paging img {border :none;}
+.paging ul{font-size: 0px; letter-spacing: 0px; word-spacing: 0px;padding-inline-start : 5px;}
+.paging ul li{display: inline-block; text-align: center; vertical-align:middle;}
+.paging ul .num_wrap {margin: 0 10px;}
+.paging ul li .num{width:auto; border: 1px solid #e3e3e3; display:block; padding:0 12px; height:32px; line-height:32px; font-size:13px; margin:0 1px; background:#fff; color:#333;}
+.paging ul li .num.active{border: 1px solid #656873; background:#848894; color:#fff;}
+.paging ul li .controll{display:block; width:32px; height:32px; border: 1px solid #cfcfcf;}
+.paging ul li .controll.first{background: url("/common/img/d_prev.png") no-repeat 50% 50%; margin-right:-1px; border:0px;}
+.paging ul li .controll.back{background: url("/common/img/prev.png") no-repeat 50% 50%;border:0px;}
+.paging ul li .controll.next{background: url("/common/img/next.pn") no-repeat 50% 50%;border:0px;}
+.paging ul li .controll.last{background: url("/common/img/d_next.png") no-repeat 50% 50%; margin-left:-1px;border:0px;}
+
+/** loading 추가 */
+.loader {
+  position: absolute;
+  top: -230px;
+  left: 50%;
+  transform: translate(-50%, -50%);}
+

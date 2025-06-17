@@ -1,0 +1,3 @@
+#설정 등록 
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\

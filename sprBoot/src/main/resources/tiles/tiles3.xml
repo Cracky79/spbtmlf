@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- default (top , left , bottom)-->
+	<definition name="basic.layo.comm" template="/WEB-INF/jsp/tiles/layout/comm.jsp">
+		<put-attribute name="head" value="/WEB-INF/jsp/tiles/inc/head.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/tiles/inc/menu.jsp" />
+		<put-attribute name="page" />
+		<put-attribute name="foot" value="/WEB-INF/jsp/tiles/inc/foot.jsp" />
+	</definition>
+
+	<!-- blank layout -->
+	<definition name="basic.layo.blank" template="/WEB-INF/jsp/tiles/layout/blank_comm.jsp">
+		<put-attribute name="page" />
+	</definition>
+
+	<!-- default -->
+	<definition name="tiles.*.**" extends="basic.layo.comm">
+		<put-attribute name="page" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+	</definition>
+
+	<!-- blank layout -->
+	<definition name="blank.*.**" extends="basic.layo.blank">
+		<put-attribute name="page" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- empty layout -->
+	<definition name="mnu.layo.empty" template="/WEB-INF/jsp/tiles/layout/empty.jsp">
+		<put-attribute name="page" />
+	</definition>
+	
+	<!-- empty layout -->
+	<definition name="empty.*.**" extends="mnu.layo.empty">
+		<put-attribute name="page" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+</tiles-definitions>

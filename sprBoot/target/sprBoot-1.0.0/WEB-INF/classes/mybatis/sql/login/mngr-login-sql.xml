@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sprBoot.mngr.login.mapper.MngrLoginMapper"> 
+	
+	<!-- mber user info select -->
+	<select id = "selMberUserInfo" parameterType = "HashMap" resultType = "mberDto">
+		select sn as mber_no ,
+		       user_id as mber_id ,
+		       user_pwd as mber_pw ,
+		       user_nm as mber_nm ,
+		       user_email as mber_email ,
+		       user_lvl as mber_grad , 
+		       regist_dt as sbscrb_dt ,
+		       use_at 
+		  from t_data_mng_user_info
+		 where user_id = #{mber_id}
+	</select>
+	
+</mapper> 

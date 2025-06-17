@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sprBoot.conf.app.mapper.CommonMapper"> 
+
+	<select id = "selCurrentTime" parameterType = "HashMap" resultType = "String">
+		SELECT now() FROM DUAL
+	</select>
+	
+	<select id = "selTestGridData" parameterType = "HashMap" resultType = "lmap">
+		SELECT SN ,
+		       BBS_SE ,
+		       SJ,
+		       REGIST_ID,
+		       RDCNT,
+		       DATE_FORMAT(REGIST_DT , '%Y-%m-%d') F_REGIST_DT,
+		       (SELECT COUNT(1)
+		          FROM T_BBS T2
+		         WHERE T2.BBS_SE = T1.BBS_SE) TOTAL_COUNT
+		  FROM T_BBS T1
+		 WHERE BBS_SE = IFNULL(#{bbs_se},'FAQ')
+		 ORDER BY ${orderby} 
+		 <if test = "limitNum != null and limitNum != '' and perPage != null and perPage != ''">
+		   LIMIT ${limitNum} , ${perPage} 
+		 </if>
+	</select>
+	
+	<!-- jqxgrid 사용시 처리  -->
+	<sql id="mypageOpen">
+		SELECT T1.*
+		  FROM (
+				 SELECT CAST(@ROWNUM := @ROWNUM + 1 AS signed integer) as rnum ,
+                 		x.*
+                  FROM (
+	</sql>
+	
+	<sql id="mypageClose">
+						)x, (select @ROWNUM := 0) x1
+						<if test="orderby != null">
+						    order by ${orderby} 
+						</if>
+               )T1
+        <if test = "startNum != null and startNum != '' and lastNum != null and lastNum != ''">
+        	WHERE rnum <![CDATA[ > ]]> #{startNum} AND  rnum <![CDATA[ <= ]]> #{lastNum}
+        </if>
+	</sql>
+	
+	<!-- 일반 게시판 limit 처리 -->
+	<sql id="limitPager">
+		<if test="orderby != null">
+		    order by ${orderby}
+		</if>
+		<if test = "limitNum != null and pageSize != null">
+			LIMIT #{limitNum} , ${pageSize} 
+		</if>
+	</sql>
+	
+	<!-- JTABLE 게시판 limit 처리 -->
+	<sql id="JlimitPager">
+		<if test="orderby != null">
+		    order by ${orderby}
+		</if>
+		<if test = "limitNum != null and perPage != null">
+			LIMIT ${limitNum} , ${perPage} 
+		</if>
+	</sql>
+	
+</mapper> 
