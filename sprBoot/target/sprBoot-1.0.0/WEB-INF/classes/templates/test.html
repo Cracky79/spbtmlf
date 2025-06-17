@@ -1,0 +1,76 @@
+<!-- 
+test layout html
+2021.05.24
+
+ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+   
+<script>
+	$(document).ready(function(){
+		jTable.bind();	/** dataTable */
+	});
+	
+	/** tt event  테이블아이디 , jsonRow */
+	var trnim = function ( tableId , rowJson) {
+		alert(tableId + ":" + rowJson.crm_no)
+	}
+	
+	/** td event */
+	var lolnim = function (idx , value , rowJson) {
+		alert(idx + ":" + value + ":" + rowJson.crm_no)
+	}
+	/** callback */
+	var edt_callback = function (resp) {
+		alert('callback!')
+	}
+	/** custom renderer function */ 
+	var renderFunc = function (tdIdx , value , jsonRow) {
+		return "["+value+"]";
+	}
+	/** 등록 레이어 호출 */
+	var insPage = function () {
+		gfn_openInsertLayer('jtb1' , {songbagang : "sec"});
+	}
+</script>
+
+	#테스트 JTABLE + Bootstrap4
+	<table id='jtb1' class="table table-striped table-bordered table-hover jtable"
+		data='{"_cm_id" : "sss" , "p_smple_no" : "S21012100006" , "p_sn" : "6" , "crm_no" : "S21012100006"}'
+		url="jtableAjax.do" 
+		edit-url='jtableEdit.do'
+		event='trnim'
+		theme-color='#848894'
+		theme-text-color='#fff' >
+		<thead>
+			<tr>
+				<th data-id='crm_no' data-align='center' width='12%'
+					data-hidden='true'>NO</th>
+				<th data-id='user_nm' data-align='center' data-edit='true'
+					data-require='true' width='15%' data-event='lolnim'>이름</th>
+				<th data-id='mobile_phne' data-edit='false' data-align='center'
+					width='20%'>연락처</th>
+				<th data-id='adres' data-edit='true' width='15%'>주소</th>
+				<th data-id='regist_dt' data-align='center' width='15%'>신청일자</th>
+				<!-- <th data-id='dlvy_comp' data-show-id='dlvy_code_nm'
+					data-align="center" data-edit='true' data-require='true'
+					data-type="select"
+					data-type-option-url='/common/selCacheCodeString.do?groupCode=DLVY&nullText=선택하세요'>택배업체</th> -->
+				<th data-id='dlvy_comp' data-show-id='dlvy_code_nm'
+					data-align="center" data-edit='true' data-require='true'>택배업체</th>
+				<th data-id='dlvy_trace_no' data-edit='true' data-require='true'
+					width='15%'>송장번호</th>
+				<th data-id='se' data-edit='false' data-require='true'
+					data-hidden='true' width='10%'>구분</th>
+				<th data-id='ssn_id' data-edit='false' data-require='true'
+					data-hidden='true'>ssn_id</th>
+			</tr>
+		</thead>
+	</table>
+   
+</th:block>
+</html>

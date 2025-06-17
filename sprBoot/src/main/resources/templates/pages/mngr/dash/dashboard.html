@@ -1,0 +1,29 @@
+<!-- 
+	관리자 대시보드 
+	25.06.16
+	@Cracky
+ -->
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}"
+      layout:fragment="content">
+
+<script>
+$(document).ready(function(){
+	
+});
+
+</script>
+<body>
+	* 세션 정보 <br/> 
+	${session.MNGR_PJ_SESSION.mber_id} : <span th:text="${session.MNGR_PJ_SESSION.mber_id}"></span><br/> 
+	${session.MNGR_PJ_SESSION.mber_nm} : <span th:text="${session.MNGR_PJ_SESSION.mber_nm}"></span><br/> 
+	${session.MNGR_PJ_SESSION.mber_email} : <span th:text="${session.MNGR_PJ_SESSION.mber_email}"></span><br/> 
+	${session.MNGR_PJ_SESSION.mber_grad} : <span th:text="${session.MNGR_PJ_SESSION.mber_grad}"></span><br/> 
+	${session.MNGR_PJ_SESSION.sbscrb_dt} : <span th:text="${session.MNGR_PJ_SESSION.sbscrb_dt}"></span><br/> 
+	
+</body>
+</html>

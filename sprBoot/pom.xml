@@ -1,0 +1,299 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.springboot</groupId>
+  <artifactId>sprBoot</artifactId>
+  <!-- <packaging>pom</packaging> -->
+  <packaging>war</packaging>
+  <version>1.0.0</version>
+  <url>https://maven.apache.org</url>
+  
+  <properties>
+  	<java.version>1.8</java.version>
+  	<maven.version>3.8.1</maven.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target> 
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <!-- <webapp.lib>${basedir}/src/main/webapp/WEB-INF/lib</webapp.lib> -->
+  </properties>
+  
+  <parent>
+  	<groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.18</version>
+   <relativePath /> 
+  </parent>
+  
+  
+  <repositories>
+  	  <!-- local repo -->
+	  <repository>
+		 <id>in-project</id>
+		 <name>custom jars</name>
+		 <url>file://${project.basedir}/lib</url>
+	  </repository>
+	  
+	  <repository>       
+	  	<id>central</id>       
+	  	<name>Central Repository</name>       
+	  	<url>https://repo.maven.apache.org/maven2</url>   
+	  </repository> 
+	  
+  </repositories>
+  
+  <pluginRepositories>
+	<pluginRepository>
+	<releases>
+	<enabled>true</enabled>
+	</releases>
+	<id>central</id>
+	<url>https://repo.maven.apache.org/maven2</url>
+	</pluginRepository>
+  </pluginRepositories>
+  
+  <dependencies>
+  
+	<!-- <dependency>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-resources-plugin</artifactId>
+	    <version>2.4.3</version>
+	</dependency> --> 
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+	<dependency>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-compiler-plugin</artifactId>
+	    <version>${maven.version}</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-war-plugin</artifactId>
+	  <version>3.3.2</version>
+	</dependency>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    
+    <!-- thymeleaf  -->
+    <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+	</dependency>
+	
+	<!-- html reload -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-devtools</artifactId>
+	    <version>2.0.4.RELEASE</version>
+	    <scope>runtime</scope>
+	    <optional>true</optional>
+	</dependency>
+	
+	<dependency>
+		<groupId>nz.net.ultraq.thymeleaf</groupId>
+		<artifactId>thymeleaf-layout-dialect</artifactId>
+		<version>3.1.0</version>
+	</dependency>
+
+    
+	<!-- <dependency> 
+	    <groupId>net.sf.json-lib</groupId>
+	    <artifactId>json-lib</artifactId>
+	    <version>2.4</version>
+	</dependency>-->
+	
+	<dependency>
+	    <groupId>com.googlecode.json-simple</groupId>
+	    <artifactId>json-simple</artifactId>
+	    <version>1.1</version>
+	</dependency>
+
+   <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.4.5</version>
+	</dependency>
+	
+	<dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>1.3.2</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+    </dependency>
+    
+	<!-- tomcat -->
+    <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+    </dependency>
+    
+    <!-- tiles 3.9 추가 -->
+    <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>3.0.8</version>
+    </dependency>    
+
+	<dependency>
+         <groupId>jstl</groupId>
+         <artifactId>jstl</artifactId>
+         <version>1.2</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>5.1.45</version>
+	</dependency>
+	
+	<!-- apache libs -->
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>1.3.1</version>
+	</dependency>
+
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.5</version>
+	</dependency>
+
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>1.3</version>
+	</dependency>
+
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+		<version>1.5</version><!--$NO-MVN-MAN-VER$-->
+	</dependency>
+
+	<dependency>
+		<groupId>commons-logging</groupId>
+		<artifactId>commons-logging</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+	
+	<!-- logback 
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-core</artifactId>
+	    <version>1.1.2</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>1.1.2</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.10</version>
+	</dependency>
+	-->
+	<!-- 
+	<dependency>
+	    <groupId>org.codehaus.janino</groupId>
+	    <artifactId>janino</artifactId>
+	    <version>2.7.7</version>
+	    <exclusions>
+	    	<exclusion>
+	    		<artifactId>commons-compiler</artifactId>
+	    		<groupId>org.codehaus.janino</groupId>
+	    	</exclusion>
+	    </exclusions>
+	</dependency> -->
+    
+    <!-- System librarys -->
+	<dependency>
+		<groupId>logsynk</groupId>
+		<artifactId>paramutil</artifactId>
+		<version>1.0.0</version>
+		<!-- <scope>system</scope> -->
+		<!-- <systemPath>file://${basedir}/lib/logsynk_sprboot_1.8.jar</systemPath> -->
+	</dependency>
+	
+	<dependency>
+		<groupId>logsynk</groupId>
+		<artifactId>fileutil</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+	
+  </dependencies>
+ 
+  <!-- <build>
+	 <plugins>
+	  <plugin>
+	   <groupId>org.apache.maven.plugins</groupId>
+	   <artifactId>maven-war-plugin</artifactId>
+	   <version>3.3.2</version>
+	  </plugin>
+	 </plugins>
+  </build> -->
+  <build>
+       <plugins>
+           <plugin>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-maven-plugin</artifactId>
+           </plugin>
+           
+           <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.version}</version>
+				<configuration>
+				    <source>${java.version}</source> 
+				    <target>${java.version}</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+				    <source>${java.version}</source> 
+				    <target>${java.version}</target>
+				</configuration>
+			</plugin>
+       </plugins>
+   </build>
+  
+</project>
