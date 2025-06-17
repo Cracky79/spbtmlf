@@ -2,16 +2,17 @@
 
 <%--
 정적 라이브러리 로드
-Cracky 2021.05.21
+Cracky 2025.06.15
  --%>
 
 <%-- bootstrap --%>
-<link rel="stylesheet" type="text/css" href="/logsynk/css/bootstrap.min.css" media="all"> 
-<link rel="stylesheet" type="text/css" href="/logsynk/css/bootstrap-theme.min.css" media="all">
-<link rel="stylesheet" type="text/css" href="/logsynk/css/paging.css" media="all">
+<link rel="stylesheet" type="text/css" href="/common/css/bootstrap.min.css" media="all"> 
+<link rel="stylesheet" type="text/css" href="/common/css/bootstrap-theme.min.css" media="all">
+<link rel="stylesheet" type="text/css" href="/common/css/paging.css" media="all">
 
-<script src="/logsynk/js/jquery-1.11.1.min.js"></script>
-<script src="/logsynk/js/jTable.bootstrap.js"></script> 
-<script src="/logsynk/js/jparam.min.js"></script>
-<script src="/logsynk/js/jcommon-validator.min.js"></script>
-<script src="/logsynk/js/bootstrap.min.js"></script>
+<script src="/common/js/jquery.min.js"></script>
+<script src="/common/js/jTable.bootstrap.min.js"></script> 
+<script src="/common/js/jparam.min.js"></script>
+<script src="/common/js/jcommon-validator.min.js"></script>
+<script src="/common/js/bootstrap.min.js"></script>
+<script src="/common/js/util.js"></script>
