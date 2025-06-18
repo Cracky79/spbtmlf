@@ -29,4 +29,13 @@ public class Constants {
 	 **********************************************************************************************/
 	public static String MNGE_SESSION_KEY = "MNGR_PJ_SESSION";		/** 관리자 세션 키 */
 	public static String USER_SESSION_KEY = "USER_PJ_SESSION";		/** 사용자 세션 키 */
+	
+	
+	/******************************************************************************************************
+	 * Menu Session Key
+	 ******************************************************************************************************/
+	public final static String FULL_MENU_LIST = "FULL_MENU_LIST";		// 풂메뉴 목록		
+	public final static String TOP_MENU_KEY = "_menu_code";				// top 메뉴 코드 
+	public final static String LEFT_MENU_KEY = "_left_code";			// left 메뉴 코드 
+	public final static String CHILD_MENU_KEY = "_chld_code";			// 3depth 메뉴 코드 
 }

@@ -5,16 +5,37 @@
 	
 	<!-- mber user info select -->
 	<select id = "selMberUserInfo" parameterType = "HashMap" resultType = "mberDto">
-		select sn as mber_no ,
-		       user_id as mber_id ,
-		       user_pwd as mber_pw ,
-		       user_nm as mber_nm ,
-		       user_email as mber_email ,
-		       user_lvl as mber_grad , 
-		       regist_dt as sbscrb_dt ,
+		select sn ,
+		       mber_no ,
+		       mber_id ,
+		       mber_pwd ,
+		       mber_nm ,
+		       mber_email ,
+		       mber_sttus , 
+		       mber_grad ,
+		       zip ,
+		       adres ,
+		       adres_detail ,
+		       sbscrb_dt ,
+		       change_reason ,
+		       last_login_time ,
+		       group_code ,
+		       author_code ,
+		       mber_img 
+		       regist_dt ,
 		       use_at 
-		  from t_data_mng_user_info
-		 where user_id = #{mber_id}
+		  from tb_mber_bass_info
+		 where mber_id = #{mber_id}
+		 <if test = "mber_no != null">
+		   and mber_no = #{mber_no}
+		 </if>
+		 <if test = "mber_sttus != null">
+		   and mber_sttus = #{mber_sttus}
+		 </if>
+		 <if test = "use_at != null">
+		   and use_at = #{use_at}
+		 </if>
 	</select>
 	
 </mapper> 
+

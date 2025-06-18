@@ -69,8 +69,9 @@ public class MngrLoginController extends CommController {
 			MemberDto resultDto = mngrLoginService.selMberUserInfo(mberDto);
 			
 			if ( Validate.isNotEmpty(resultDto) ) {
+				
 				/** step1 사용자 비밀 번호 일치 여부 확인 */
-				if ( mberDto.getMber_pw().equals(resultDto.getMber_pw()) ) {
+				if ( mberDto.getMber_pwd().equals(resultDto.getMber_pwd()) ) {
 					/** step2 use_at 체크  */
 					if ( resultDto.getUse_at().equals("Y") ) {
 						// 이동 페이지 

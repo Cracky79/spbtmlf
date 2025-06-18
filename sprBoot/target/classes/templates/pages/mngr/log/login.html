@@ -53,14 +53,14 @@ var logFlag = false;		// 중복 로그인 클릭 방지
          alert ('로그인 아이디를 입력하세요.');
          $('#mber_id').focus();
      } 
-	 else if ( !isNotEmpty( $('#mber_pw').val() )) {
+	 else if ( !isNotEmpty( $('#mber_pwd').val() )) {
 		 alert ('비밀번호를 입력하세요.');
-         $('#mber_pw').focus();
+         $('#mber_pwd').focus();
      }  
 	 else {
          if ( !logFlag ) {        	 
         	 const encPwd = CryptoJS.SHA512($('#mber_pw').val()).toString();        	 
-        	 $('#mber_pw').val(encPwd);
+        	 $('#mber_pwd').val(encPwd);
          	 $('#logForm').attr('action','loginProc.do').submit();
          	 logFlag = true;
          } else
@@ -99,7 +99,7 @@ var logFlag = false;		// 중복 로그인 클릭 방지
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user enter"
-                                                id='mber_pw' name='mber_pw' placeholder="패스워드" value=''>
+                                                id='mber_pwd' name='mber_pwd' placeholder="패스워드" value=''>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">

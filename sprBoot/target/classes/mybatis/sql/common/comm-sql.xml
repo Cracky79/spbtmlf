@@ -2,11 +2,63 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sprBoot.conf.app.mapper.CommonMapper"> 
-
-	<select id = "selCurrentTime" parameterType = "HashMap" resultType = "String">
-		SELECT now() FROM DUAL
+	
+	<!-- 관리자 메뉴 목록 반환  -->
+	<select id = "selMngrMenuList" parameterType = "HashMap" resultType = "lmap">
+		select x.*
+		  from (
+			 select t2.menu_code ,  
+			        t2.upper_code ,
+			        t2.menu_code_nm ,
+			        t2.menu_url , 
+			        t2.sort_ordr , 
+			        (select count(1)
+			           from tb_menu s 
+			          where s.upper_code = t2.menu_code) chld_count ,
+			        (select  count(1)
+			           from  tb_author s1,tb_author_menu_mapng s2 
+			          where  upper(s1.author_code) = upper(s2.author_code)
+			            and  upper(s1.author_code) = upper(#{_authorcode})
+			            <if test = "_group_code != null and !_group_code.equalsIgnoreCase('')">
+			            and s2.group_code = #{_group_code}
+			            </if>
+	 		            and  s2.menu_code = t2.menu_code) menu_auth  
+			   from (
+			 select menu_code , 
+			        upper_code,
+			        menu_code_nm,
+			        menu_url,
+			        sort_ordr, 
+			        use_at
+			  from t_menu  
+			  inner join (select min(upper_code) as min_menu 
+			                from tb_menu) min_t  
+				 on t_menu.upper_code = min_t.min_menu) t1  
+			  right outer join  tb_menu t2 
+				 on t1.menu_code = t2.menu_code
+			  where t2.use_at = 'Y'
+				and t2.upper_code != 'ROOT'
+				<if test = "upper_code != null">
+				and t2.upper_code = #{upper_code}
+				</if>
+				<if test = "code != null">
+				and t2.code = #{code}
+				</if> ) x
+		<if test = "_filter != null and _filter.equalsIgnoreCase('Y')">
+		where menu_auth <![CDATA[>]]> 0	
+		</if>
+		<!-- order by sort_ordr -->
+		order by 
+		<if test = "mappingMenu != null and mappingMenu.equalsIgnoreCase('Y')">
+			menu_code
+		</if>
+		<if test = "mappingMenu == null or mappingMenu.equals('')">
+			upper_code
+		</if>
+		 , sort_ordr
 	</select>
 	
+	<!-- test grid sample -->
 	<select id = "selTestGridData" parameterType = "HashMap" resultType = "lmap">
 		SELECT SN ,
 		       BBS_SE ,
