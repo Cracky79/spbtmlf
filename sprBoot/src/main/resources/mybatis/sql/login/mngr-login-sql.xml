@@ -4,7 +4,7 @@
 <mapper namespace="sprBoot.mngr.login.mapper.MngrLoginMapper"> 
 	
 	<!-- mber user info select -->
-	<select id = "selMberUserInfo" parameterType = "HashMap" resultType = "mberDto">
+	<select id = "selMberUserInfo" parameterType = "mberDto" resultType = "mberDto">
 		select sn ,
 		       mber_no ,
 		       mber_id ,
