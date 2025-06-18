@@ -4,7 +4,7 @@
 <mapper namespace="sprBoot.conf.app.mapper.CommonMapper"> 
 	
 	<!-- 관리자 메뉴 목록 반환  -->
-	<select id = "selMngrMenuList" parameterType = "HashMap" resultType = "lmap">
+	<select id = "selMngrMenuList" parameterType = "sprBoot.logsynk.comm.util.ParamUtil" resultType = "lmap">
 		select x.*
 		  from (
 			 select t2.menu_code ,  
@@ -30,10 +30,10 @@
 			        menu_url,
 			        sort_ordr, 
 			        use_at
-			  from t_menu  
+			   from tb_menu  
 			  inner join (select min(upper_code) as min_menu 
 			                from tb_menu) min_t  
-				 on t_menu.upper_code = min_t.min_menu) t1  
+				 on tb_menu.upper_code = min_t.min_menu) t1  
 			  right outer join  tb_menu t2 
 				 on t1.menu_code = t2.menu_code
 			  where t2.use_at = 'Y'
