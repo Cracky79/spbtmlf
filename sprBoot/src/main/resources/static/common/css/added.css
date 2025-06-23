@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* 
+색상 재정의 2020.07.01 red - > blue
+#header {border-bottom: 3px solid #f14c6e;}
+.topmenu li a.on {color: #e90131; border: 1px solid #f14c6e; min-width : 120px;}
+.lnb_area > li.hy-sub.selected > .deth1 {background: #f14c6e;}
+.lnb_area li .deth2 li {border-bottom: 1px solid #bbb;} */
+
+
+/* .tab_area .tab_large li.on a {color: #e90131; border: 1px solid #f14c6e;} */
+
+
+.h40 .select select {vertical-align: top;}
+
+.supplier_message dt {font-size: 13px; font-weight: 600; color: #333; line-height: 25px; background: url('../images/common/bul_list1.png') 0 12px no-repeat; padding-left: 10px;}
+.supplier_message dd {font-size: 13px; font-weight: normal; color: #555; line-height: 20px; padding-left: 20px; position: relative;}
+.supplier_message dd.n_bar::before {display: none;}
+.supplier_message dd::before {position: absolute; top: 10px; left: 10px; width: 5px; height: 1px; background: #bbb; display: block; content: '';}
+
+.input_txt.wid100p input {width: calc(100% - 3px) !important;}
+.textarea_normal textarea {border: 1px solid #b3b3b3; padding: 5px; box-sizing: border-box}
+th .btn_check {height: 16px;}
+th .btn_check label {height: 16px; background-position: 0 1px;}
+
+/* 팝업 */
+.popContainer .content_inner {padding: 0;}
+/* 로그인 */
+.login_header .header_inner .logo a {width: inherit;}
+.login_header .header_inner .logo a img {width:inherit; height: 50px;}
+.login_real .real_btn li .join{display:block; position:relative; background:#fff; border: 1px solid #cccdcf; padding:0; margin:0; width:100%; height:51px; line-height:51px; font-family:roboto,'opensans','Malgun Gothic','맑은 고딕','Helvetica nenu',Arial, "Apple SD Gothic"; font-weight:600; font-size:16px; letter-spacing:normal; text-align:center; color:#e0002e; cursor:pointer; border-radius:none; box-sizing:border-box;}
+.login_contents ul.bar {clear: both;}
+.login_contents ul.bar li {padding-left: 10px; font-size: 13px; font-weight: 300; color: #333; line-height: 1.5;background: url('../images/common/bul_list1.png') 0 9px no-repeat;}
+.login_contents ul.bar li.asterisk {background: url('../images/common/bul_list2.png') 0 9px no-repeat; background-size: 2px;}
+
+/* 버튼 */
+.grid_crud_add:hover{border:1px solid #f14c6e;}
+.grid_crud_del:hover{border:1px solid #f14c6e;}
+.crud_search:hover{border:1px solid #f14c6e;}
+.crud_search2:hover{border:1px solid #f14c6e;}
+.crud_new:hover{border:1px solid #f14c6e;}
+.crud_save:hover{border:1px solid #f14c6e;}
+.crud_excel:hover{border:1px solid #f14c6e;}
+.crud_print:hover{border:1px solid #f14c6e;}
+.crud_del:hover{border:1px solid #f14c6e;}
+.crud_liste:hover{border:1px solid #f14c6e;}
+.crud_modify:hover{border:1px solid #f14c6e;}
+.crud_basic:hover{border:1px solid #f14c6e;}
+.crud_basic2:hover{border:1px solid #f14c6e;}
+.crud_basic3:hover{border:1px solid #f14c6e;}
