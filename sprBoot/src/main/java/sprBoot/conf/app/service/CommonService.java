@@ -23,6 +23,17 @@ public class CommonService {
 	@Autowired
 	private CommonMapper mapper;
 	
+	
+	/**
+	 * 권한 및 그룹에 따른 관리자 초기 메뉴 목록
+	 * @param param
+	 * @return
+	 * @throws Exception
+	 */
+	public List <Map> selMngrMenuList ( ParamUtil param ) throws Exception {
+		return mapper.selMngrMenuList(param.getParameterMap());
+	}
+	
 	/**
 	 * jTable Grid 테스트
 	 * @param param

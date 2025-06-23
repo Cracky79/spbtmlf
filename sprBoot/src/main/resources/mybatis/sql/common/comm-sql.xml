@@ -4,13 +4,13 @@
 <mapper namespace="sprBoot.conf.app.mapper.CommonMapper"> 
 	
 	<!-- 관리자 메뉴 목록 반환  -->
-	<select id = "selMngrMenuList" parameterType = "sprBoot.logsynk.comm.util.ParamUtil" resultType = "lmap">
+	<select id = "selMngrMenuList" parameterType = "HashMap" resultType = "lmap">
 		select x.*
 		  from (
 			 select t2.menu_code ,  
 			        t2.upper_code ,
 			        t2.menu_code_nm ,
-			        t2.menu_url , 
+			        ifnull(t2.menu_url , '#') menu_url , 
 			        t2.sort_ordr , 
 			        (select count(1)
 			           from tb_menu s 
@@ -18,8 +18,8 @@
 			        (select  count(1)
 			           from  tb_author s1,tb_author_menu_mapng s2 
 			          where  upper(s1.author_code) = upper(s2.author_code)
-			            and  upper(s1.author_code) = upper(#{_authorcode})
-			            <if test = "_group_code != null and !_group_code.equalsIgnoreCase('')">
+			            and  upper(s1.author_code) = upper(#{_author_code})
+			            <if test = "_group_code != null">
 			            and s2.group_code = #{_group_code}
 			            </if>
 	 		            and  s2.menu_code = t2.menu_code) menu_auth  

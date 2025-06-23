@@ -10,6 +10,7 @@ import sprBoot.logsynk.comm.util.ParamUtil;
 
 /**
  * Mybatis Mapper 처리 클래스  ( DAO )
+ * comm-sql.xml
  * 2025.06.17
  * @author Cracky
  *
@@ -19,7 +20,7 @@ import sprBoot.logsynk.comm.util.ParamUtil;
 public interface CommonMapper {
 	
 	/** 관리자 메뉴 목록 */
-	List <Map> selMngrMenuList ( ParamUtil param ) throws Exception;
+	List <Map> selMngrMenuList ( Map param ) throws Exception;
 	 
 	/** sample grid data */
 	List <Map> selTestGridData (Map param) throws Exception;

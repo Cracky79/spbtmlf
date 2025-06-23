@@ -40,6 +40,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
 	}
     
+    @Autowired
+    MngrLogInterceptor mngrLoginInterceptor; // <--AuthInterceptor 인스턴스 받아오기로 변경 ( 인터셉터 빈 주입 불가 ) 25.06.18
+    
     /**
      * 관리자 로그인 처리 인터셉터 추가
      * 25.06.17
@@ -47,7 +50,8 @@ public class WebConfiguration implements WebMvcConfigurer {
      */
     @Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new MngrLogInterceptor())	
+		//registry.addInterceptor(new MngrLogInterceptor())			/** new를 쓰는 경우 인테셉터에서 bean 주입 객체 사용시 null */
+    	registry.addInterceptor(mngrLoginInterceptor)			/** autowired로 인터셉터 객체를 주입받아 인자에 넣어준다 */
 				.addPathPatterns("/mngr/**")
 				.excludePathPatterns("/common/css/**", "/common/img/**", "/common/js/**", "/common/font/**", "/common/images/**")		/** 정적 리소스 제외 */
 				.excludePathPatterns("/mngr/log/**");	/** mngr/log 를 제외한 나머지는 인터셉터 영향을 받도록 한다. */

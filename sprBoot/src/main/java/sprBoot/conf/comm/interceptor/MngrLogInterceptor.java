@@ -2,16 +2,14 @@ package sprBoot.conf.comm.interceptor;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.ModelAndView;
-
-import sprBoot.conf.app.mapper.CommonMapper;
+import sprBoot.conf.app.service.CommonService;
 import sprBoot.conf.comm.constant.Constants;
 import sprBoot.conf.comm.util.CommScriptGenerator;
 import sprBoot.conf.comm.util.SessionUtil;
@@ -25,12 +23,12 @@ import sprBoot.mngr.login.dto.MemberDto;
  * @author cracky
  *
  */
-
 @Slf4j
-public class MngrLogInterceptor implements HandlerInterceptor{
+@Component			/** service 주입 */
+public class MngrLogInterceptor implements HandlerInterceptor {
 	
 	@Autowired
-	CommonMapper commonMapper;
+	private CommonService commonService;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -43,6 +41,8 @@ public class MngrLogInterceptor implements HandlerInterceptor{
 					CommScriptGenerator.ST_HREF  + "/mngr/log/login.do" +  CommScriptGenerator.ED_HREF , null);
 			return false;
 		}
+		
+		_initMenuList(request , mDto);		
 		
 		/** 서비스에 매핑 된 메뉴가 없어도  로그아웃 처리 시킨다.  25.06.18*/
 		if ( Validate.isEmpty (SessionUtil.getAttribute(Constants.FULL_MENU_LIST)) ) {
@@ -68,11 +68,13 @@ public class MngrLogInterceptor implements HandlerInterceptor{
 			
 			ParamUtil param = new ParamUtil(request);
 			
-			param.set("_authorcode", mDto.getAuthor_code()+"".toUpperCase());		/** 관리자 권한 코드 **/
+			param.set("_author_code", mDto.getAuthor_code()+"".toUpperCase());		/** 관리자 권한 코드 **/
 			param.set("_filter" , "Y");			/** 권한 있는 메뉴만 디스플레이 한다. */
-			param.set("_group_code", mDto.getGroup_code());		/** 그룹 (업체) 별 메뉴 디스플레이  */
+			param.set("_group_code", mDto.getGroup_code()+"");		/** 그룹 (업체) 별 메뉴 디스플레이  */
 			
-			List <Map> mngrMenuList = commonMapper.selMngrMenuList(param);			/** 세션에 대한 메뉴 목록 */
+			List <Map> mngrMenuList = commonService.selMngrMenuList(param);			/** 세션에 대한 메뉴 목록 */
+			
+			System.err.println(mngrMenuList);
 			
 			// 메뉴 데이터가 있는 경우에는 세션을 생성 시킨다.  25.06.18 수정 
 			if (Validate.isNotEmpty(mngrMenuList)) {

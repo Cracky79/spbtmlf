@@ -84,6 +84,7 @@ function gfn_chkBizNo(bizNo){
     return false;
 }
 
+
 /**
  * formatted value
  * @param pVal      : 대상 value

@@ -75,7 +75,7 @@ public class MngrLoginController extends CommController {
 					/** step2 use_at 체크  */
 					if ( resultDto.getUse_at().equals("Y") ) {
 						// 이동 페이지 
-						forwardUrl = "/mngr/dash/dashboard.do";
+						forwardUrl = "/mngr/dash/dashBoard.do";
 						mesage = "";		/** 로그인 성공  */
 						/** 세션 생성 */
 						SessionUtil.setAttribute(Constants.MNGE_SESSION_KEY, resultDto);
@@ -90,5 +90,19 @@ public class MngrLoginController extends CommController {
 		return null;
 	}
 	
-	
+	/**
+	 * 관리자 로그아웃 세션 처리  
+	 * @param param
+	 * @param model
+	 * @param mberDto
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("logout.do")
+	public String logout( HttpServletResponse response ) throws Exception {
+		if ( SessionUtil.isSessionValid(Constants.MNGE_SESSION_KEY) )	/** 세션이 살아 있다면 모든 세션 종료 처리 */
+			SessionUtil.invalidate();
+		Function.deleteCookie(response, "L_MNU_ID");		/** 메뉴 쿠키 삭제 처리 */
+		return "redirect:login.do";
+	}
 }

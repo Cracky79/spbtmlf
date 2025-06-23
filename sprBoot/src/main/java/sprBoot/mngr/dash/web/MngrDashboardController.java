@@ -26,7 +26,7 @@ public class MngrDashboardController extends CommController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/dashboard.do")
+	@RequestMapping("/dashBoard.do")
 	public String selDashboard ( ParamUtil param , Model model ) throws Exception {
 		return getForwardPageFromUrl(Constants.THYME_LEAF_DEFAULT_LAYOUT , param.getHttpServletrequestuest() ); 
 	}

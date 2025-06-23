@@ -18,13 +18,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import sprBoot.conf.comm.constant.Constants;
+import sprBoot.conf.comm.constant.SessionEnums;
 import sprBoot.logsynk.comm.util.ParamUtil;
 import sprBoot.logsynk.comm.util.Token;
 import sprBoot.conf.comm.util.CommScriptConsts;
 import sprBoot.conf.comm.util.CommScriptGenerator;
 import sprBoot.conf.comm.util.Function;
+import sprBoot.conf.comm.util.SessionUtil;
 import sprBoot.conf.comm.util.Validate;
 import sprBoot.logsynk.comm.util.JTable;
 
@@ -135,6 +140,37 @@ public class CommController implements ErrorController {
         model.addAttribute("code", status.toString());
         model.addAttribute("msg", HttpStatus.valueOf(Integer.valueOf(status.toString())));
         return Constants.THYME_LEAF_ROOT_LAYOUT + "error/error";
+    }
+ 	
+ 	
+ 	
+ 	/**
+ 	 * 관리자  , 사용자 세션 유효성 검증 
+ 	 * 
+ 	 * mngr : 관리자 
+ 	 * user : 사용자 
+ 	 * 
+ 	 * @param request
+ 	 * @param response
+ 	 * @param model
+ 	 * @return
+ 	 */
+ 	@RequestMapping( value = "/common/session/isSessionValid.do" , method = RequestMethod.POST)
+ 	@ResponseBody
+    public Map <String,Object> isSessionValid ( @RequestParam String sessionSe ) throws Exception {
+ 		
+ 		boolean flag = Boolean.FALSE;
+ 		String mesage = "잘못된 접근 입니다.";
+ 		
+ 		/** key : 세션키  , url : 세션이 없는 경우 처리 url */
+ 		Map <String,String> sessionInfoMap = SessionEnums.isValidSessionInfo(sessionSe);
+ 		
+ 		if ( Validate.isNotEmpty(sessionInfoMap) ) { 
+ 			flag = SessionUtil.isSessionValid(sessionInfoMap.get("key"));
+ 			if (!flag) 
+ 				mesage = "로그인이 필요한 서비스 입니다.";
+ 		}
+        return responseJsonBody(flag, mesage, sessionInfoMap.get("url"));
     }
  	
  	

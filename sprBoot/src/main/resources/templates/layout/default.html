@@ -3,28 +3,47 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" 
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-    <!-- 공통 헤더-->
-	<head th:replace = "~{fragments/head :: headFragment}"></head>
-	<!-- 공통 스크립트-->
-    <config th:replace="~{fragments/script :: scriptFragment}"></config>
+      
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="-1" />  
+		<meta http-equiv="Cache-Control" content="no-cache" />		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+        <title th:text="${pageTitle}"></title>
+        <!-- 공통 스크립트-->
+    	<config th:replace="~{fragments/script :: scriptFragment}"></config>
+    	
+    </head>
     
-    <body id="page-top">
+    <body class="sub_bg">
+    
         <div id="wrapper">
-            <!-- 사이드바-->
-            <th:block th:replace="~{fragments/sidebar :: sidebarFragment}"></th:block>
-            
-            <div id="content-wrapper" class="d-flex flex-column">
-                <div id="content">
-                    <!-- 상단바-->
-                    <th:block th:replace="~{fragments/topbar :: topbarFragment}"></th:block>
-                    <!-- 본문-->
-                    <div style='width:95%;margin-left:2%;'>
-                    	<th:block layout:fragment="content"></th:block>
-                    </div>
-                </div>
-                <!-- 공통 하단-->
-                <!-- <th:block th:replace="fragments/footer :: footerFragment"></th:block> -->
-            </div>
+        
+        	<div class="header">
+				<!-- Header -->
+				<head th:replace = "~{fragments/head :: headFragment}"></head>
+				<!-- //Header -->
+			</div>
+			
+			<!-- Content -->
+			<div id="container">
+				<!-- Content left Menu -->
+				<div class="lnb">
+		            <!-- 사이드바-->
+		            <th:block th:replace="~{fragments/sidebar :: sidebarFragment}"></th:block>
+				</div>
+				<!-- contents -->
+				<div class="content">
+					<th:block layout:fragment="content"></th:block>
+				</div>
+			</div>
+			
         </div>
+        <!-- footer -->
+        <th:block th:replace="fragments/foot :: footerFragment"></th:block>
     </body>
 </html>

@@ -5,16 +5,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:fragment="headFragment">
-    <head>
-        <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <meta name="description" content="">
-	    <meta name="author" content="">
-	    
-        <title th:text="${pageTitle}"></title>
-    </head>
-    
+   
     <header id="header">
 
 	    <!-- logo -->
@@ -25,36 +16,40 @@
 	
 	   	<!-- top menu 처리  -->
 	    <ul class="topmenu">
-	        <c:forEach items="${sessionScope.FULL_MENU_LIST}" var="mngrTopMenu" varStatus="i">
-	            <c:set var="styleClass" value="" />
-	            <c:if test="${(mngrTopMenu.menu_code eq sessionScope._menu_code) or (empty sessionScope._menu_code and i.index eq '0')}">
-	                <c:set var="styleClass" value="on" />
-	            </c:if>
-	            <!-- 1depth 상위 메뉴만 뿌려준다. -->
-	            <c:if test="${fn:substring(mngrTopMenu.menu_code,3,9) eq '000000'}">
-	            	<li class='${mngrTopMenu.menu_code}'>
-	            		<%-- 메뉴 텍스트 대신 다국어 프로퍼티로 대체  2023.05.24  --%>
-	            		<%-- <a href="#" data-url='${mngrTopMenu.menu_url}'
-	            		   data-code='${mngrTopMenu.menu_code}' class='lgkTop ${styleClass}'>${mngrTopMenu.menu_code_nm}</a></li> --%>
-	            		<a href="#" data-url='${mngrTopMenu.menu_url}'
-	            		   data-code='${mngrTopMenu.menu_code}' class='lgkTop ${styleClass}'><spring:message code="mngr.menu.${mngrTopMenu.menu_code}"/></a></li>
-	            </c:if>
-	            <c:if test="${fn:substring(mngrTopMenu.menu_code,3,9) ne '000000'}">
-	            	<li class='${mngrTopMenu.menu_code}' style='display:none;'>
-	            		<%-- 메뉴 텍스트 대신 다국어 프로퍼티로 대체  2023.05.24 --%>
-	            		<%-- <a href="#" data-url='${mngrTopMenu.menu_url}' data-tup-code='${mngrTopMenu.upper_code}'
-	            		   data-code='${mngrTopMenu.menu_code}' class='lgkTop ${styleClass}'>${mngrTopMenu.menu_code_nm}</a></li> --%>
-	            		<a href="#" data-url='${mngrTopMenu.menu_url}' data-tup-code='${mngrTopMenu.upper_code}'
-	            		   data-code='${mngrTopMenu.menu_code}' class='lgkTop ${styleClass}'><spring:message code="mngr.menu.${mngrTopMenu.menu_code}"/></a></li>
-	            		   
-	            </c:if>
-	        </c:forEach>
+	    	
+	    	<th:block th:each = "mngrTopMenu , i : ${session.FULL_MENU_LIST}">
+	    		
+	    		<!-- 메뉴 class on 변수처리 추가 25.06.24 -->
+	    		<th:block th:with ="flag = ${mngrTopMenu.menu_code eq session._menu_code or (session._menu_code == null and i.index eq 0)} , styleClass=${flag == true ? 'on' : ''}">
+	    	
+	    		<!-- Top menus -->
+	    		<th:block th:if="${#strings.substring(mngrTopMenu.menu_code,3,9) eq '000000'}">
+	    			<li class='' th:classappend='${mngrTopMenu.menu_code}'>
+			    		<a href="#" th:data-url="${mngrTopMenu['menu_url']}" 
+			    		            th:data-code="${mngrTopMenu.menu_code}"
+			    		            class='lgkTop' th:classappend="${styleClass}"
+			            		    th:text="${mngrTopMenu.menu_code_nm}">${mngrTopMenu.menu_code}</a>
+		           	</li>
+				</th:block>	  
+		   		
+		   		<!-- 레프트 메뉴인 경우  -->
+		   		<th:block th:unless="${#strings.substring(mngrTopMenu.menu_code,3,9) eq '000000'}">
+		   			<li th:classappend='${mngrTopMenu.menu_code}' style='display:none;'>
+			    		<a href="#" th:data-url="${mngrTopMenu['menu_url']}" 
+			    		            th:data-code="${mngrTopMenu.menu_code}"
+			    		            th:data-tup-code='${mngrTopMenu.upper_code}'
+			    		            class='lgkTop' th:classappend="${styleClass}"
+			            		    th:text="${mngrTopMenu.menu_code_nm}">${mngrTopMenu.menu_code}</a>
+		            </li>
+				</th:block>
+				
+			</th:block>
 	    </ul>
 	    <!-- //topmenu -->
 	    
-	    <form id = '_headForm' name = '_headForm' method = 'post'>
-	    	<input type = 'hidden' id = '_menu_code' name = '_menu_code' value = '${sessionScope._menu_code}'/>
-	    	<input type = 'hidden' id = '_left_code' name = '_left_code' value = '${sessionScope._left_code}'/>
-	    	<input type = 'hidden' id = '_chld_code' name = '_chld_code' value = '${sessionScope._chld_code}'/>
+	    <form th:id = '_headForm' th:name = '_headForm' method = 'post'>
+	    	<input type = 'hidden' th:id = '_menu_code' th:name = '_menu_code' th:value = '${session._menu_code}'/>
+	    	<input type = 'hidden' th:id = '_left_code' th:name = '_left_code' th:value = '${session._left_code}'/>
+	    	<input type = 'hidden' th:id = '_chld_code' th:name = '_chld_code' th:value = '${session._chld_code}'/>
 	    </form>
 	</header>

@@ -1,6 +1,8 @@
 package sprBoot.conf.comm.util;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 공통 유틸 클래스 
@@ -43,5 +45,17 @@ public class Function {
 		if ( Validate.isNotEmpty (currentUrl) ) 
 			currentUrl = currentUrl.replaceAll("\\/", ".");
 		return currentUrl;
+	}
+	
+	/**
+	 * 특정 쿠키 제거 처리
+	 * @param response
+	 * @param cookieName
+	 * @throws Exception
+	 */
+	public static void deleteCookie ( HttpServletResponse response , String cookieName ) throws Exception {
+		Cookie cookie = new Cookie(cookieName, null); 
+	    cookie.setMaxAge(0); 
+	    response.addCookie(cookie); 
 	}
 }

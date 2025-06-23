@@ -6,7 +6,7 @@
 
 /* header */
 /*
-#header {position:relative; height:70px; background:#fff; padding-left:220px; border-bottom:3px solid #086fcb; background:#fff url("../images/common/logo.png") no-repeat right bottom;}
+#header {position:relative; height:70px; background:#fff; padding-left:220px; border-bottom:3px solid #8223f5; background:#fff url("../images/common/logo.png") no-repeat right bottom;}
 */
 #header {position:relative; height:70px; background:#fff; padding-left:220px; border-bottom:4px solid #8223f5; background:#fff;}
 #header .logo{position:absolute; top:0; left:0; text-align:center;}
@@ -19,8 +19,8 @@
 .topmenu li{float:left; margin-right:5px;}
 .topmenu li:last-child{background:none; margin-right:0;}
 .topmenu li a{height:45px; line-height:45px; border:1px solid #ddd; background:#fff; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; padding:0 10px; color:#333; text-align:center; display:block; font-size:13px; letter-spacing:-0.5px; -webkit-transition: all .35s ease; -moz-transition: all .35s ease; -ms-transition: all .35s ease; -o-transition: all .35s ease; transition: all .35s ease; min-width : 120px;}
-.topmenu li a:hover{color:#086fcb; border:1px solid #086fcb*;}
-.topmenu li a.on{color:#086fcb; border:1px solid #086fcb;}
+.topmenu li a:hover{color:#8223f5; border:1px solid #8223f5*;}
+.topmenu li a.on{color:#8223f5; border:1px solid #8223f5;}
 
 /* setting */
 .btn_setting {position:fixed; width:50px; height:50px; display:block; background:url("../images/common/btn_setting.png") no-repeat; right:20px; bottom:20px; text-indent:-999999px; z-index:9999999; transition-property: top, bottom; transition-duration: 0.3s; -webkit-transition-property: top, bottom; -webkit-transition-duration: 0.3s;}
@@ -134,7 +134,7 @@
     font-size: 14px;
 }
 .chart_layout_hulk2 .w_two2 > li .Sj_Kor li a{  }
-.chart_layout_hulk2 .w_two2 > li .Sj_Kor li a:hover{text-decoration: underline; color: #086fcb }
+.chart_layout_hulk2 .w_two2 > li .Sj_Kor li a:hover{text-decoration: underline; color: #8223f5 }
 
 .chart_layout_hulk2 .chart_cont2{padding:15px;}
 
@@ -144,8 +144,8 @@
 .ctgry_box li{margin-right:5px; padding-top:5px;}
 .ctgry_box li:last-child{background:none; }
 .ctgry_box li a{height: 35px;line-height: 35px;border:1px solid #ddd;background:#fff;-webkit-border-radius:10px !important;-moz-border-radius:4px;border-radius: 46px;padding:0 10px;color:#333;text-align:center;display:block;font-size:13px;letter-spacing: 3.5px;-webkit-transition: all .35s ease;-moz-transition: all .35s ease;-ms-transition: all .35s ease;-o-transition: all .35s ease;transition: all .35s ease;min-width : 120px;}
-.ctgry_box li a:hover{color:#086fcb; border:1px solid #086fcb*;}
-.ctgry_box li a.on{color:#086fcb; border:1px solid #086fcb;}
+.ctgry_box li a:hover{color:#8223f5; border:1px solid #8223f5*;}
+.ctgry_box li a.on{color:#8223f5; border:1px solid #8223f5;}
 
 
 
