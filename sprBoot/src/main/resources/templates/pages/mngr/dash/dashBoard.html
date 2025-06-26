@@ -22,7 +22,7 @@ $(document).ready(function(){
 	<div class="title_area">
 		<h2 class="title">대시보드</h2>
 	</div>	
-		
+		dsasdfg
 	<div class="content_inner">
 
 		* 세션 정보 <br/> 
@@ -32,8 +32,10 @@ $(document).ready(function(){
 		${session.MNGR_PJ_SESSION.mber_grad} : <span th:text="${session.MNGR_PJ_SESSION.mber_grad}"></span><br/> 
 		${session.MNGR_PJ_SESSION.sbscrb_dt} : <span th:text="${session.MNGR_PJ_SESSION.sbscrb_dt}"></span><br/>
 		
-		<span th:text="${session._menu_code}"/>
-	
+		<span th:text="${session._menu_code}"/></br>
+		
+		properties: <span th:text="#{log.sucs(${session.MNGR_PJ_SESSION.mber_nm})}"></span>
+		
 	</div>
 	
 	
