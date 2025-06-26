@@ -15,6 +15,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target> 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <slf4jVersion>1.7.21</slf4jVersion>
       <!-- <webapp.lib>${basedir}/src/main/webapp/WEB-INF/lib</webapp.lib> -->
   </properties>
   
@@ -95,7 +96,7 @@
 	<dependency>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-devtools</artifactId>
-	    <version>2.0.4.RELEASE</version>
+	    <version>2.7.18.RELEASE</version>
 	    <scope>runtime</scope>
 	    <optional>true</optional>
 	</dependency>
@@ -148,9 +149,41 @@
         <artifactId>spring-boot-devtools</artifactId>
     </dependency>
 
+    <!-- <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+    </dependency> -->
+    
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4jVersion}</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>${slf4jVersion}</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.2.1</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+            </exclusion>
+        </exclusions>
+        <scope>runtime</scope>
+    </dependency>
+
     <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
+        <version>1.16.12</version>
     </dependency>
     
 	<!-- tomcat -->
