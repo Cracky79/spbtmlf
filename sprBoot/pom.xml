@@ -94,12 +94,11 @@
 	
 	<!-- html reload -->
 	<dependency>
-	    <groupId>org.springframework.boot</groupId>
-	    <artifactId>spring-boot-devtools</artifactId>
-	    <version>2.7.18.RELEASE</version>
-	    <scope>runtime</scope>
-	    <optional>true</optional>
-	</dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
 	
 	<dependency>
 		<groupId>nz.net.ultraq.thymeleaf</groupId>
